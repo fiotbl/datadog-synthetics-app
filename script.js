@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const loginBtn = document.getElementById('login-btn');
     if (loginBtn) {
         loginBtn.addEventListener('click', () => {
-            const user = document.getElementById('username1232324abc').value;
+            const user = document.getElementById('username').value;
             const pass = document.getElementById('password').value;
             if (user === 'admin' && pass === 'password') {
                 window.location.href = 'dashboard.html';
@@ -21,9 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Only show the popup about 50% of the time to test conditional logic
             if (Math.random() > 0.5) {
                 document.getElementById('promo-popup').style.display = 'flex';
-            } else {
-                alert('No promotions available at this time.');
-            }
+            } 
         });
     }
 
