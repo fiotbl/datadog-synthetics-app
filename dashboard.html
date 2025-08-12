@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADB Dashboard</title>
+    <script>
+      (function(h,o,u,n,d) {
+        h=h[d]=h[d]||{q:[],onReady:function(c){h.q.push(c)}}
+        d=o.createElement(u);d.async=1;d.src=n
+        n=o.getElementsByTagName(u)[0];n.parentNode.insertBefore(d,n)
+      })(window,document,'script','https://www.datadoghq-browser-agent.com/us1/v5/datadog-rum.js','DD_RUM')
+      DD_RUM.onReady(function() {
+        DD_RUM.init({
+          clientToken: 'pub890faa737c6c3a89343a5173fc08443f',
+          applicationId: '936d0e77-6723-4dfb-aad5-278193ebf57f',
+          site: 'datadoghq.com',
+          service: 'adb-workshop-frontend',
+          env: 'workshop',
+          version: '1.0.0', 
+          sessionSampleRate: 100,
+          sessionReplaySampleRate: 100,
+          trackUserInteractions: true,
+          trackResources: true,
+          trackLongTasks: true,
+          defaultPrivacyLevel: 'allow'
+        });
+      })
+    </script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Promotional Popup (Initially Hidden) -->
+    <div id="promo-popup" class="popup-container" style="display: none;">
+        <div class="popup-content">
+            <h3>Datadog Workshop Special!</h3>
+            <p>Get 10% off your next monitoring project.</p>
+            <button id="close-popup-btn">Close</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <header>
+            <img src="https://www.shiftcities.org/sites/default/files/styles/og_image/public/2021-11/ADB%20logo%20stacked.png?itok=c8mszcVBs" alt="ADB Logo" class="logo">
+            <h1>Project Funding Dashboard</h1>
+        </header>
+        <main>
+            <h2 id="welcome-message">Welcome, Admin!</h2>
+
+            <!-- Section for Conditional Step Demo -->
+            <section class="card">
+                <h3>Conditional Popup</h3>
+                <p>This button will sometimes trigger a promotional popup.</p>
+                <button id="check-promo-btn">Check for Promotions</button>
+            </section>
+
+            <!-- Section for JS Assertion Demo -->
+            <section class="card">
+                <h3>Project ROI Calculator</h3>
+                <p>Investment: $<span id="investment">1000000</span></p>
+                <p>Return: $<span id="return">1250000</span></p>
+                <p><b>Calculated ROI: <span id="roi">25</span>%</b></p>
+                <p class="small-text">Our test will verify this calculation is correct.</p>
+            </section>
+
+            <!-- Section for Multi-Window Demo -->
+            <section class="card">
+                <h3>Multi-Window Support</h3>
+                <p>This link opens project details in a new browser window.</p>
+                <a href="https://www.adb.org/projects/49287-001/main" target="_blank" id="new-window-link">View Project Details (New Window)</a>
+            </section>
+
+            <!-- Section for CAPTCHA and Value Passing Demo -->
+            <section class="card">
+                <h3>Submit New Project & Extract ID</h3>
+                <input type="text" id="project-name" placeholder="New Project Name">
+                <div class="captcha-box">
+                    <p><strong>I am not a robot.</strong></p>
+                    <div id="captcha-challenge" class="captcha-challenge">
+                        <span>Click the square to prove you're human.</span>
+                    </div>
+                     <!-- This is our "bypass" for the test -->
+                    <button id="captcha-bypass-btn">Bypass for Synthetic Test</button>
+                </div>
+                <button id="submit-project-btn" disabled>Submit Project</button>
+                <p id="submission-status" class="success"></p>
+            </section>
+
+            <!-- Section for Verifying Passed Value -->
+            <section class="card">
+                <h3>Verify Project ID</h3>
+                <p>Enter the Project ID generated above to confirm it was passed correctly.</p>
+                <input type="text" id="verify-project-id" placeholder="Enter Project ID here">
+                <button id="verify-btn">Verify</button>
+                <p id="verification-status"></p>
+            </section>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

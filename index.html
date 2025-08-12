@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADB Project Funding - Login</title>
+    <script>
+      (function(h,o,u,n,d) {
+        h=h[d]=h[d]||{q:[],onReady:function(c){h.q.push(c)}}
+        d=o.createElement(u);d.async=1;d.src=n
+        n=o.getElementsByTagName(u)[0];n.parentNode.insertBefore(d,n)
+      })(window,document,'script','https://www.datadoghq-browser-agent.com/us1/v5/datadog-rum.js','DD_RUM')
+      DD_RUM.onReady(function() {
+        DD_RUM.init({
+          clientToken: 'pub890faa737c6c3a89343a5173fc08443f',
+          applicationId: '936d0e77-6723-4dfb-aad5-278193ebf57f',
+          site: 'datadoghq.com',
+          service: 'adb-workshop-frontend',
+          env: 'workshop',
+          version: '1.0.0', 
+          sessionSampleRate: 100,
+          sessionReplaySampleRate: 100,
+          trackUserInteractions: true,
+          trackResources: true,
+          trackLongTasks: true,
+          defaultPrivacyLevel: 'allow'
+        });
+      })
+    </script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="https://www.shiftcities.org/sites/default/files/styles/og_image/public/2021-11/ADB%20logo%20stacked.png?itok=c8mszcVB" alt="ADB Logo" class="logo">
+            <h1>Project Funding Dashboard</h1>
+        </header>
+        <main class="login-form">
+            <h2>Login</h2>
+            <p>Use `admin` and `password` to login.</p>
+            <input type="text" id="username1232324abc" placeholder="Username">
+            <input type="password" id="password" placeholder="Password">
+            <button id="login-btn">Login</button>
+            <p id="error-message" class="error"></p>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
