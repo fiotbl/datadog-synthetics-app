@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
         loginBtn.addEventListener('click', () => {
             const user = document.getElementById('username').value;
             const pass = document.getElementById('password').value;
-            if (user === 'admin' && pass === 'password') {
+            if (user === 'admin' && pass === 'Password123!') {
                 window.location.href = 'dashboard.html';
             } else {
                 document.getElementById('error-message').textContent = 'Invalid credentials.';
