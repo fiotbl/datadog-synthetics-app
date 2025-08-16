@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const loginBtn = document.getElementById('login-btn');
     if (loginBtn) {
         loginBtn.addEventListener('click', () => {
-            const user = document.getElementById('username').value;
+            const user = document.getElementById('username123').value;
             const pass = document.getElementById('password').value;
             if (user === 'admin' && pass === 'Password123!') {
                 window.location.href = 'dashboard.html';
