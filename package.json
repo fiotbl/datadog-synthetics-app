@@ -2,6 +2,7 @@
   "name": "adb-datadog-demo",
   "version": "1.0.0",
   "dependencies": {
-    "dd-trace": "^5.14.0"
+    "dd-trace": "^5.64.0",
+    "express": "^5.1.0"
   }
 }
