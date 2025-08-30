@@ -1,0 +1,25 @@
+datadog:
+  apiKeyExistingSecret: datadog-agent
+  clusterName: fiora-gke-cluster
+  logs:
+    enabled: true
+    containerCollectAll: true
+  processAgent:
+    enabled: true
+    processCollection: true
+  tags:
+    - env:sandbox
+    - owner:fiora
+    - team:platform
+  podLabelsAsTags:
+    "app.kubernetes.io/name": "app"
+    "app.kubernetes.io/part-of": "service"
+    "app.kubernetes.io/version": "version"
+  namespaceLabelsAsTags:
+    "team": "team" 
+  nodeLabelsAsTags:
+    "cloud.google.com/gke-nodepool": "nodepool"
+
+clusterAgent:
+  replicas: 2
+  createPodDisruptionBudget: true
