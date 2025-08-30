@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: adb-synthetics-app
+  namespace: web
+  labels:
+    app.kubernetes.io/name: adb-synthetics-app
+    app.kubernetes.io/part-of: storefront
+    app.kubernetes.io/version: "${VER}"
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: adb-synthetics-app
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: adb-synthetics-app
+        app.kubernetes.io/part-of: storefront
+        app.kubernetes.io/version: "${VER}"
+      annotations:
+        ad.datadoghq.com/web.tags: >-
+          ["service:adb-synthetics-app","component:web","version:${VER}"]
+        ad.datadoghq.com/web.logs: >-
+          [{"source":"nodejs","service":"adb-synthetics-app","auto_multi_line_detection":true}]
+    spec:
+      containers:
+        - name: web
+          image: ${IMAGE}
+          env:
+            - name: NEXT_PUBLIC_DD_CLIENT_TOKEN
+              valueFrom: { secretKeyRef: { name: datadog-rum, key: clientToken } }
+            - name: NEXT_PUBLIC_DD_APPLICATION_ID
+              valueFrom: { secretKeyRef: { name: datadog-rum, key: applicationId } }
+            - name: DD_TRACE_AGENT_URL
+              value: "http://$(HOST_IP):8126"
+            - name: HOST_IP
+              valueFrom: { fieldRef: { fieldPath: status.hostIP } }
+          ports:
+            - name: http
+              containerPort: 3000
+          readinessProbe: { httpGet: { path: "/", port: http }, initialDelaySeconds: 5 }
+          livenessProbe:  { httpGet: { path: "/", port: http }, initialDelaySeconds: 15 }
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: adb-synthetics-app
+  namespace: web
+spec:
+  type: LoadBalancer
+  selector:
+    app.kubernetes.io/name: adb-synthetics-app
+  ports:
+    - port: 80
+      targetPort: http
